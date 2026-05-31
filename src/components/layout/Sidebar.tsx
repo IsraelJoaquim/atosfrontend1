@@ -35,20 +35,11 @@ export function Sidebar() {
   return (
     <aside className="w-60 min-h-screen bg-bg-secondary border-r border-bg-border flex flex-col">
       <div className="p-6 border-b border-bg-border">
-        <div className="flex items-center gap-2">
-            <span className="font-display text-2xl font-extrabold tracking-tighter">
-              AT<span className="text-accent-cyan">OS</span>
-            </span>
-            <span className="text-text-muted font-display text-2xl">/</span>
-            <Image
-              src="/logo-trb.png"
-              alt="TRB"
-              width={48}
-              height={24}
-              className="object-contain"
-            />
-        </div>
-          <p className="text-text-muted text-xs font-mono mt-0.5">v1.0.0</p>
+        <span className="font-display text-2xl font-extrabold tracking-tighter">
+          AT<span className="text-accent-cyan">OS </span>
+            / {user?.tenantName}
+        </span>
+        <p className="text-text-muted text-xs font-mono mt-0.5">v1.0.0</p>
       </div>
 
       <nav className="flex-1 p-4 space-y-1">
