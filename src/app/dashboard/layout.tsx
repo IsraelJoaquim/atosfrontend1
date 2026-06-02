@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
-import { Sidebar } from '@/components/layout/Sidebar';
+import { Navbar } from '@/components/layout/Sidebar';
 import { Loader2 } from 'lucide-react';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -27,10 +27,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   if (!user) return null;
 
   return (
-    <div className="flex min-h-screen bg-bg-primary">
-      <Sidebar />
+    <div className="min-h-screen bg-bg-primary flex flex-col">
+      <Navbar />
       <main className="flex-1 overflow-auto">
-        <div className="p-8 animate-fade-in">{children}</div>
+        <div className="mx-auto max-w-6xl px-4 py-6 md:px-8 md:py-8 animate-fade-in">
+          {children}
+        </div>
       </main>
     </div>
   );
