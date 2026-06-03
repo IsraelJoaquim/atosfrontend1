@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Gerenciamento de chamados técnicos',
   icons: {
     icon: '/favicon.png',
-    apple: '/favicon.png'
+    apple: '/favicon.png',
   },
     manifest: '/manifest.json',
 
