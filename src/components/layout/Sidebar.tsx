@@ -47,7 +47,7 @@ export function Navbar() {
             {user?.tenantName && (
               <>
                 <span className="text-text-muted text-sm font-mono">/</span>
-                <span className="text-text-secondary text-x1 font-bold truncate max-w-[120px]">
+                <span className="text-text-secondary text-xl font-bold truncate max-w-[120px]">
                   {user.tenantName}
                 </span>
               </>
