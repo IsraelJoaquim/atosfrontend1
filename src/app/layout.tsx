@@ -6,8 +6,11 @@ export const metadata: Metadata = {
   title: 'ATOS Ticket Manegement',
   description: 'Gerenciamento de chamados técnicos',
   icons: {
-    icon: '/favicon.png'
-  }
+    icon: '/favicon.png',
+    apple: '/favicon.png'
+  },
+    manifest: '/manifest.json',
+
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
