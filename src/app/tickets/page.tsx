@@ -175,7 +175,10 @@ export default function TicketsPage() {
                         </span>
                       </td>
                       <td className="px-5 py-3.5 text-text-muted text-xs font-mono">
-                        {new Date(t.createdAt).toLocaleDateString('pt-BR')}
+                        {new Date(t.createdAt).toLocaleDateString('pt-BR',{
+                          day: '2-digit', month: '2-digit', year: 'numeric',
+                          hour: '2-digit', minute: '2-digit'
+                        })}
                       </td>
                       {user?.role === 'admin' && (
                         <td className="px-5 py-3.5">
