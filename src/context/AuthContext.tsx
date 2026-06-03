@@ -48,6 +48,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   function scheduleLogout(expiresAt: number) {
     if (logoutTimerRef.current) clearTimeout(logoutTimerRef.current);
     const msUntilExpiry = expiresAt - Date.now();
+    console.log('Logout agendado em:', msUntilExpiry, 'ms');
     if (msUntilExpiry <= 0) {
       doLogout();
       return;
