@@ -3,7 +3,7 @@ import { AuthProvider } from '@/context/AuthContext';
 import '../styles/globals.css';
 
 export const metadata: Metadata = {
-  title: 'ATOS Ticket Manegement',
+  title: 'ATOS Ticket Management',
   description: 'Gerenciamento de chamados técnicos',
   icons: {
     icon: '/favicon.png',
