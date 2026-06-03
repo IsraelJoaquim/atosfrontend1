@@ -178,7 +178,7 @@ export default function TicketsPage() {
                         {new Date(t.createdAt).toLocaleDateString('pt-BR',{
                           day: '2-digit', month: '2-digit', year: 'numeric',
                           hour: '2-digit', minute: '2-digit'
-                        }).replace(',', ' ')}
+                        })}
                       </td>
                       {user?.role === 'admin' && (
                         <td className="px-5 py-3.5">
