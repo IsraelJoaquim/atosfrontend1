@@ -73,7 +73,7 @@ export default function RegisterPage() {
             AT<span className="text-accent-cyan">OS</span>
           </span>
           <p className="text-text-secondary text-sm mt-1 font-mono tracking-widest uppercase">
-            Sistema de Chamados
+            Ticket Manegement
           </p>
         </div>
 

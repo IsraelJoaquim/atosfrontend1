@@ -3,8 +3,11 @@ import { AuthProvider } from '@/context/AuthContext';
 import '../styles/globals.css';
 
 export const metadata: Metadata = {
-  title: 'ATOS — Sistema de Chamados',
+  title: 'ATOS Ticket Manegement',
   description: 'Gerenciamento de chamados técnicos',
+  icons: {
+    icon: '/favicon.png'
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
