@@ -5,6 +5,14 @@ function getToken(): string | null {
   return localStorage.getItem('atos_token');
 }
 
+// dispatcher global de loading — funciona fora do React
+type LoadingDispatch = { start: () => void; done: () => void };
+let loadingDispatch: LoadingDispatch | null = null;
+
+export function registerLoadingDispatch(dispatch: LoadingDispatch) {
+  loadingDispatch = dispatch;
+}
+
 type RequestOptions = {
   method?: string;
   body?: unknown;
@@ -23,19 +31,25 @@ async function request<T>(endpoint: string, options: RequestOptions = {}): Promi
     if (token) headers['Authorization'] = `Bearer ${token}`;
   }
 
-  const res = await fetch(`${API_URL}${endpoint}`, {
-    method,
-    headers,
-    body: body ? JSON.stringify(body) : undefined,
-  });
+  loadingDispatch?.start();
 
-  const data = await res.json();
+  try {
+    const res = await fetch(`${API_URL}${endpoint}`, {
+      method,
+      headers,
+      body: body ? JSON.stringify(body) : undefined,
+    });
 
-  if (!res.ok) {
-    throw new Error(data?.error || 'Erro na requisição');
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data?.error || 'Erro na requisição');
+    }
+
+    return data as T;
+  } finally {
+    loadingDispatch?.done();
   }
-
-  return data as T;
 }
 
 export const api = {

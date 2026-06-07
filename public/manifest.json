@@ -1,7 +1,7 @@
 {
   "name": "ATOS Ticket Management",
   "short_name": "ATOS",
-  "description": "Gerenciamento de chamados técnicos",
+  "description": "Gerenciamento de chamados",
   "start_url": "/login",
   "display": "standalone",
   "background_color": "#0a0a0f",

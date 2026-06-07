@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { LayoutDashboard, Ticket, Users, LogOut, Menu, X, ChevronDown } from 'lucide-react';
+import { LoadingBridge } from './LoadingBridge';
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -20,13 +21,13 @@ export function Navbar() {
 
   const roleColors: Record<string, string> = {
     admin: 'text-role-admin',
-    tecnico: 'text-role-tecnico',
+    atendente: 'text-role-atendente',
     usuario: 'text-role-usuario',
   };
 
   const roleLabels: Record<string, string> = {
     admin: 'Administrador',
-    tecnico: 'Técnico',
+    atendente: 'Atendente',
     usuario: 'Usuário',
   };
 
@@ -163,6 +164,8 @@ export function Navbar() {
             </div>
           </div>
         )}
+            <LoadingBridge />
+
       </header>
     </>
   );

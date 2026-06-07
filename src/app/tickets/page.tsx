@@ -86,7 +86,7 @@ export default function TicketsPage() {
     return matchSearch && matchStatus;
   });
 
-  const showOpener = user?.role === 'admin' || user?.role === 'tecnico';
+  const showOpener = user?.role === 'admin' || user?.role === 'atendente';
 
   return (
     <div className="space-y-6">

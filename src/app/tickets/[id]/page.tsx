@@ -10,7 +10,7 @@ type Movimentacao = {
   id: string;
   statusAntes: 'aberto' | 'em_andamento' | 'finalizado';
   statusDepois: 'aberto' | 'em_andamento' | 'finalizado';
-  tecnicoNome: string | null;
+  atendenteNome: string | null;
   observacao: string | null;
   createdAt: string;
 };
@@ -95,7 +95,7 @@ export default function TicketDetailPage() {
   if (loading) return <div className="flex items-center justify-center h-64"><Loader2 size={20} className="animate-spin text-accent-cyan" /></div>;
   if (!ticket) return <div className="text-center text-text-muted text-sm py-20">{error || 'Chamado não encontrado.'}</div>;
 
-  const canUpdateStatus = user?.role === 'tecnico' || user?.role === 'admin';
+  const canUpdateStatus = user?.role === 'atendente' || user?.role === 'admin';
   const isFinished = ticket.status === 'finalizado';
   const validNextStatuses = ticket.status === 'aberto'
     ? [{ value: 'em_andamento', label: 'Em andamento' }]
@@ -129,8 +129,8 @@ export default function TicketDetailPage() {
           </span>
           {ticket.assignedToName && (
             <span className="flex items-center gap-1.5 text-text-muted text-xs font-mono">
-              <User size={11} className="text-role-tecnico" />
-              <span className="text-role-tecnico">{ticket.assignedToName}</span>
+              <User size={11} className="text-role-atendente" />
+              <span className="text-role-atendente">{ticket.assignedToName}</span>
             </span>
           )}
           <span className="flex items-center gap-1.5 text-text-muted text-xs font-mono">
@@ -183,7 +183,7 @@ export default function TicketDetailPage() {
                       <span className="text-text-muted mx-1.5">→</span>
                       {statusConfig[mov.statusDepois].label}
                     </span>
-                    {mov.tecnicoNome && <span className="text-role-tecnico text-xs font-mono">{mov.tecnicoNome}</span>}
+                    {mov.atendenteNome && <span className="text-role-atendente text-xs font-mono">{mov.atendenteNome}</span>}
                   </div>
                   {mov.observacao && <p className="text-text-secondary text-xs leading-relaxed">{mov.observacao}</p>}
                   <p className="text-text-muted text-xs font-mono">{fmt(mov.createdAt)}</p>

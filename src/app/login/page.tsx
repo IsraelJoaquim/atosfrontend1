@@ -1,13 +1,16 @@
 'use client';
 
-import { useState, FormEvent, Suspense } from 'react';
+import { useState, FormEvent, Suspense, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
+import { useToast } from '@/context/ToastContext';
 import Link from 'next/link';
 import { Eye, EyeOff, Loader2 } from 'lucide-react';
 
 function LoginForm() {
-  const { login } = useAuth();
+  const { login, user, isLoading } = useAuth();
+  const { showToast } = useToast();
+  const router = useRouter();
   const searchParams = useSearchParams();
   const verified = searchParams.get('verified') === '1';
 
@@ -16,6 +19,21 @@ function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!isLoading && user) {
+      showToast('Você já está autenticado.', 'info');
+      router.push('/dashboard')
+    }
+  }, [user, isLoading]);
+
+  if (isLoading || user) {
+    return (
+      <div className="min-h-screen bg-bg-primary flex items-center justify-center ">
+        <Loader2 size={24} className=" animate-spin text-accent-cyan" />
+      </div>
+    );
+  }
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -108,6 +126,12 @@ function LoginForm() {
               {loading ? <><Loader2 size={16} className="animate-spin" />Entrando...</> : 'Entrar'}
             </button>
           </form>
+
+          <div className="text-center mt-4">
+            <Link href="/forgot-password" className="text-text-muted hover:text-accent-cyan text-xs font-mono transition-colors">
+              Esqueci minha senha
+            </Link>
+          </div>
         </div>
 
         <p className="text-center text-text-muted text-xs font-mono mt-6">

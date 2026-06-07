@@ -43,7 +43,7 @@ export default function DashboardPage() {
     { label: 'Finalizados', value: finalizados, icon: CheckCircle, color: 'text-status-finalizado', bg: 'bg-status-finalizado/10' },
   ];
 
-  const showOpener = user?.role === 'admin' || user?.role === 'tecnico';
+  const showOpener = user?.role === 'admin' || user?.role === 'atendente';
 
   return (
     <div className="space-y-6">

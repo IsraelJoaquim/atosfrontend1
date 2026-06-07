@@ -10,7 +10,7 @@ type User = {
   id: string;
   name: string;
   email: string;
-  role: 'admin' | 'tecnico' | 'usuario';
+  role: 'admin' | 'atendente' | 'usuario';
   active: boolean;
   email_verified: boolean;
   createdAt: string;
@@ -18,7 +18,7 @@ type User = {
 
 const roleConfig = {
   admin: { label: 'Admin', color: 'text-role-admin bg-role-admin/10 border-role-admin/20' },
-  tecnico: { label: 'Técnico', color: 'text-role-tecnico bg-role-tecnico/10 border-role-tecnico/20' },
+  atendente: { label: 'Atendente', color: 'text-role-atendente bg-role-atendente/10 border-role-atendente/20' },
   usuario: { label: 'Usuário', color: 'text-role-usuario bg-role-usuario/10 border-role-usuario/20' },
 };
 
@@ -148,7 +148,7 @@ export default function UsersPage() {
                               onChange={(e) => setEditingRoleValue(e.target.value)}
                             >
                               <option value="usuario">Usuário</option>
-                              <option value="tecnico">Técnico</option>
+                              <option value="atendente">Atendente</option>
                               <option value="admin">Admin</option>
                             </select>
                             <button onClick={() => handleRoleUpdate(u.id)} className="text-accent-cyan hover:text-accent-cyan_hover">
@@ -215,7 +215,7 @@ export default function UsersPage() {
                           onChange={(e) => setEditingRoleValue(e.target.value)}
                         >
                           <option value="usuario">Usuário</option>
-                          <option value="tecnico">Técnico</option>
+                          <option value="atendente">Atendente</option>
                           <option value="admin">Admin</option>
                         </select>
                         <button onClick={() => handleRoleUpdate(u.id)} className="text-accent-cyan"><Check size={14} /></button>
@@ -273,7 +273,7 @@ export default function UsersPage() {
                 <div className="relative">
                   <select className="input pr-8 appearance-none cursor-pointer" value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })}>
                     <option value="usuario">Usuário</option>
-                    <option value="tecnico">Técnico</option>
+                    <option value="atendente">Atendente</option>
                     <option value="admin">Admin</option>
                   </select>
                   <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none" />
